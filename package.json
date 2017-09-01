@@ -1,0 +1,28 @@
+{
+  "name": "nightwatch-example",
+  "version": "1.0.0",
+  "description": "Nightwatch example",
+  "main": "index.js",
+  "scripts": {
+    "test": "nightwatch",
+    "test:chrome": "npm run test -- --env chrome",
+    "test:firefox": "npm run test -- --env firefox"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mucsi96/nightwatch-example.git"
+  },
+  "author": "Igor Mucsicska <mucsi_96@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mucsi96/nightwatch-example/issues"
+  },
+  "homepage": "https://github.com/mucsi96/nightwatch-example#readme",
+  "devDependencies": {
+    "chromedriver": "^2.32.0",
+    "geckodriver": "^1.8.1",
+    "nightwatch": "^0.9.16",
+    "phantomjs-prebuilt": "^2.1.15",
+    "selenium-server": "^3.5.2"
+  }
+}
