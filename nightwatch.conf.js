@@ -1,5 +1,4 @@
 const seleniumServer = require('selenium-server');
-const phantomjs = require('phantomjs-prebuilt');
 const chromedriver = require('chromedriver');
 const geckodriver = require('geckodriver');
 
@@ -14,7 +13,11 @@ module.exports = {
     server_path: seleniumServer.path,
     log_path: '',
     host: '127.0.0.1',
-    port: 4444
+    port: 4444,
+    cli_args: {
+      'webdriver.chrome.driver': chromedriver.path,
+      'webdriver.gecko.driver': geckodriver.path
+    }
   },
   test_settings: {
     default: {
@@ -22,11 +25,13 @@ module.exports = {
       selenium_port: 4444,
       selenium_host: '127.0.0.1',
       desiredCapabilities: {
-        browserName: 'phantomjs',
+        browserName: 'chrome',
         javascriptEnabled: true,
         acceptSslCerts: true,
-        'phantomjs.binary.path': phantomjs.path
-      }
+        chromeOptions: {
+          args: ['incognito', 'headless', 'no-sandbox', 'disable-gpu']
+        }
+      },
     },
     chrome: {
       desiredCapabilities: {
@@ -34,11 +39,6 @@ module.exports = {
         javascriptEnabled: true,
         acceptSslCerts: true
       },
-      selenium: {
-        cli_args: {
-          'webdriver.chrome.driver': chromedriver.path
-        }
-      }
     },
     firefox: {
       desiredCapabilities: {
@@ -46,11 +46,6 @@ module.exports = {
         javascriptEnabled: true,
         marionette: true
       },
-      selenium: {
-        cli_args: {
-          'webdriver.gecko.driver': geckodriver.path
-        }
-      }
     }
   }
 };
